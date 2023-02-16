@@ -134,7 +134,7 @@ class BandCard extends LitElement {
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
   }
-
+  
   render() {
     return html`
       <div class="band-card">

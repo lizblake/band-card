@@ -15,6 +15,7 @@
     "start": "web-dev-server"
   },
   "dependencies": {
+    "@lrnwebcomponents/meme-maker": "^4.1.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {
