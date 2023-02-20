@@ -71,14 +71,17 @@ class BandTaskbar extends LitElement {
       document.querySelector('.band-app').appendChild(itemToClone);
     }
 
-    //toggles background
+    //changes background
     _changeBackground(e) {
       console.log("this clicks");
     }
 
     //toggles title
     _toggleTitle(e) {
-      console.log("this clicks");
+      let title = prompt("Name a band");
+      if(title) {
+        document.querySelector('band-card').title = title;
+      }
     }
 
     //deletes card

@@ -130,12 +130,14 @@ class BandCard extends LitElement {
   constructor() {
     super();
     this.title = 'scotia';
-    this.paragraphText = '';
+    this.paragraphText = 'A local State College band specializing in grunge and centered around \
+    the lore of the Squonk. Scotia was originally established before March \
+    2020 and made a post-covid return in September 2022 with two new \
+    members.';
     this.imageLink =
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
   }
-
 
 
   render() {
@@ -145,10 +147,7 @@ class BandCard extends LitElement {
           <h1 class="band-title">${this.title}</h1>
         </div>
         <p class="band-paragraph">
-          A local State College band specializing in grunge and centered around
-          the lore of the Squonk. Scotia was originally established before March
-          2020 and made a post-covid return in September 2022 with two new
-          members.
+          ${this.paragraphText}
         </p>
         <img class="band-image" src="${this.imageLink}" />
         <div class="band-button-container">
@@ -161,7 +160,7 @@ class BandCard extends LitElement {
   _showDetails() {
     var pBand = this.shadowRoot.querySelector('.band-paragraph');
     if (pBand.style.display != "block") {
-     pBand.style.display = "block";
+      pBand.style.display = "block";
     } else {
       pBand.style.display = "none";
     }
