@@ -46,7 +46,6 @@ class BandCard extends LitElement {
       animation-duration: 1s;
       animation-fill-mode: forwards;
     }
-
     .band-title {
       text-align: center;
       font-family: 'Anton', sans-serif;
@@ -54,6 +53,7 @@ class BandCard extends LitElement {
       padding: none;
     }
     .band-paragraph {
+      display: none;
       text-align: center;
       font-family: 'Anton', sans-serif;
       font-size: 12px;
@@ -69,12 +69,13 @@ class BandCard extends LitElement {
       width: 70%;
       border: none;
     }
-    .button-footer {
+    .band-button-container {
       text-align: center;
       visibility: hidden;
     }
 
     button {
+      justify-content: center;
       border: solid;
       border-color: transparent;
       color: #220032;
@@ -114,7 +115,7 @@ class BandCard extends LitElement {
     }
 
     @media screen and (max-width: 800px) and (min-width: 500px) {
-      .band-footer {
+      .band-button-container {
         visibility: visible;
       }
     }
@@ -134,7 +135,9 @@ class BandCard extends LitElement {
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
   }
-  
+
+
+
   render() {
     return html`
       <div class="band-card">
@@ -148,12 +151,20 @@ class BandCard extends LitElement {
           members.
         </p>
         <img class="band-image" src="${this.imageLink}" />
-        <div class="band-footer">
-          <button class="band-details-button">${this.buttonText}</button>
+        <div class="band-button-container">
+          <button @click="${this._showDetails}" class="band-details-button">${this.buttonText}</button>
         </div>
       </div>
     `;
   }
-}
 
+  _showDetails() {
+    var pBand = this.shadowRoot.querySelector('.band-paragraph');
+    if (pBand.style.display != "block") {
+     pBand.style.display = "block";
+    } else {
+      pBand.style.display = "none";
+    }
+  }
+}
 customElements.define('band-card', BandCard);

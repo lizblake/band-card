@@ -7,11 +7,13 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="Description" content="Put your description here." />
-    <script>
+      <script>
       window.__appCDN = 'https://cdn.webcomponents.psu.edu/cdn/';
     </script>
     <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>
     <script type="module" src="meme-maker.js"></script>
+    <script type="module" src="./src/band-card.js"></script>
+    <script type="module" src="./src/band-taskbar.js"></script>
 
     <base href="/" />
 
@@ -28,46 +30,11 @@
   </head>
 
   <body>
-    <band-taskbar></band-taskbar>
-    <band-card></band-card>
+    <div class="band-app">
+      <band-taskbar></band-taskbar>
+      <band-card></band-card>
+    </div>
 
-    <script type="module" src="./src/band-card.js"></script>
-    <script type="module" src="./src/band-taskbar.js"></script>
- 
-    <meme-maker alt="Cat stalking a small toy" image-url="https://cdn2.thecatapi.com/images/9j5.jpg" top-text="I bring you" bottom-text="the death"></meme-maker>
-
-    <script>
-      //add
-      document.querySelector('.add').addEventListener('click', function (e) {
-        const node1 = document.querySelector('.card');
-        let node2 = node1.cloneNode(true);
-        document.body.appendChild(node2);
-      });
-      //title
-      document.querySelector('.title').addEventListener('click', function (e) {
-        document.querySelector('h1').innerHTML = 'something else';
-      });
-      //delete
-      document.querySelector('.delete').addEventListener('click', function (e) {
-        var once = false;
-        document.querySelectorAll('.card').forEach((item, index) => {
-          if (index != 0 && !once) {
-            item.remove();
-            once = true;
-          }
-        });
-      });
-      //details
-      document
-        .querySelector('.details')
-        .addEventListener('click', function (e) {
-          var pTag = document.querySelector('p');
-          if (pTag.style.display === 'none') {
-            pTag.style.display = 'block';
-          } else {
-            pTag.style.display = 'none';
-          }
-        });
-    </script>
-  </body>
+   
+    </body>
 </html>

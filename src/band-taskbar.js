@@ -52,16 +52,45 @@ class BandTaskbar extends LitElement {
     super();
   }
 
-  render() {
-    return html`
+   
+
+    render() {
+      return html`
       <div class="band-taskbar">
-        <button class="band-add-button">Add</button>
-        <button class="band-background-button">Background</button>
-        <button class="band-title-button">Title</button>
-        <button class="band-delete-button">Delete</button>
+        <button @click="${this._addCard}" class="band-add-button">Add</button>
+        <button @click="${this._changeBackground}" class="band-background-button">Background</button>
+        <button @click="${this._toggleTitle}" class="band-title-button">Title</button>
+        <button @click="${this._deleteCard}"class="band-delete-button">Delete</button>
       </div>
     `;
+    }
+    
+    //adds card
+    _addCard(e) {
+      const itemToClone = document.querySelector('band-card').cloneNode();
+      document.querySelector('.band-app').appendChild(itemToClone);
+    }
+
+    //toggles background
+    _changeBackground(e) {
+      console.log("this clicks");
+    }
+
+    //toggles title
+    _toggleTitle(e) {
+      console.log("this clicks");
+    }
+
+    //deletes card
+    _deleteCard(e) {
+        if (document.querySelector('.band-app :last-child') !== document.querySelector('band-card')) {
+          document.querySelector('.band-app :last-child').remove();      
+        }
+        else {
+          alert("YOU CAN NOT DELETE!!!!");
+        }
+      }
+
   }
-}
 
 customElements.define('band-taskbar', BandTaskbar);
