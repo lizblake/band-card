@@ -9,11 +9,13 @@
     <meta name="Description" content="Put your description here." />
     <script type="module" src="./src/band-card.js"></script>
     <script type="module" src="./src/band-taskbar.js"></script>
+    <script type="module" src="./src/band-meme-maker.js"></script>
 
+   
     <base href="/" />
-<!---garbage-->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
       html,
       body {
         margin: 0;
@@ -27,10 +29,9 @@
 
   <body>
     <div class="band-app">
+      <band-meme-maker></band-meme-maker>
       <band-taskbar></band-taskbar>
       <band-card></band-card>
     </div>
-
-   
-    </body>
+  </body>
 </html>
