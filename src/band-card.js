@@ -5,7 +5,6 @@ import { LitElement, html, css } from 'lit';
 class BandCard extends LitElement {
   static properties = {
     title: { type: String },
-    paragraphText: { type: String },
     imageLink: { type: String },
     buttonText: { type: String },
   };
@@ -26,14 +25,14 @@ class BandCard extends LitElement {
       }
     }
     .band-card {
-      color: #220032;
+      color: var(--band-card-text, #220032);
       display: flex;
       flex-direction: column;
       margin-bottom: 5px;
       padding: none;
       width: 400px;
       border-radius: 10px;
-      background-color: grey;
+      background-color: var(--band-card-background, grey);
       background-image: linear-gradient(
         to right,
         rgba(255, 0, 0, 0),
@@ -130,10 +129,6 @@ class BandCard extends LitElement {
   constructor() {
     super();
     this.title = 'scotia';
-    this.paragraphText = 'A local State College band specializing in grunge and centered around \
-    the lore of the Squonk. Scotia was originally established before March \
-    2020 and made a post-covid return in September 2022 with two new \
-    members.';
     this.imageLink =
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
@@ -147,7 +142,7 @@ class BandCard extends LitElement {
           <h1 class="band-title">${this.title}</h1>
         </div>
         <p class="band-paragraph">
-          ${this.paragraphText}
+         <slot></slot>
         </p>
         <img class="band-image" src="${this.imageLink}" />
         <div class="band-button-container">

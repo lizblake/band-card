@@ -60,15 +60,16 @@ class BandTaskbar extends LitElement {
         <button @click="${this._addCard}" class="band-add-button">Add</button>
         <button @click="${this._changeBackground}" class="band-background-button">Background</button>
         <button @click="${this._toggleTitle}" class="band-title-button">Title</button>
-        <button @click="${this._deleteCard}"class="band-delete-button">Delete</button>
+        <button @click="${this._deleteCard}" class="band-delete-button">Delete</button>
       </div>
+      <slot></slot>
     `;
     }
     
     //adds card
     _addCard(e) {
-      const itemToClone = document.querySelector('band-card').cloneNode();
-      document.querySelector('.band-app').appendChild(itemToClone);
+      const itemToClone = this.querySelector('band-card').cloneNode(true);
+      this.appendChild(itemToClone);
     }
 
     //changes background
@@ -80,14 +81,14 @@ class BandTaskbar extends LitElement {
     _toggleTitle(e) {
       let title = prompt("Name a band");
       if(title) {
-        document.querySelector('band-card').title = title;
+        this.children[0].title = title;
       }
     }
 
     //deletes card
     _deleteCard(e) {
-        if (document.querySelector('.band-app :last-child') !== document.querySelector('band-card')) {
-          document.querySelector('.band-app :last-child').remove();      
+        if(this.children.length > 1) {
+          this.removeChild(this.lastElementChild);
         }
         else {
           alert("YOU CAN NOT DELETE!!!!");
