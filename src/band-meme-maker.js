@@ -141,12 +141,6 @@ class BandMemeMaker extends LitElement {
 
   render() {
     return html`
-        <head>
-        <script>
-      window.__appCDN = "https://cdn.webcomponents.psu.edu/cdn/";
-    </script>
-    <script src="https://cdn.webcomponents.psu.edu/cdn/build.js"></script>
-        </head>
       <div class="band-card">
         <meme-maker image-url="${this.imageLink}" top-text="${this.title}"></meme-maker>
       </div>

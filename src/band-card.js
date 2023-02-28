@@ -12,16 +12,15 @@ class BandCard extends LitElement {
 
   static styles = css`
     :host {
-      --band-card-light-purple:#46055b;
-      --band-card-dark-purple: #220032;
-      --band-card-grey: grey;
+      --band-card-background-color: #46055b;
+      --band-card-text-color: #220032;
     }
     @keyframes card_hover {
       from {
-        background-color: var(--band-card-grey);
+        background-color: grey;
       }
       to {
-        background-color: var(--band-card-light-purple);
+        background-color: var(--band-card-background-color);
       }
       from {
         color: black;
@@ -31,14 +30,14 @@ class BandCard extends LitElement {
       }
     }
     .band-card {
-      color: var(--band-card-dark-purple);
+      color: var(--band-card-text-color);
       display: flex;
       flex-direction: column;
       margin-bottom: 5px;
       padding: none;
       width: 400px;
       border-radius: 10px;
-      background-color: var(--band-card-grey);
+      background-color: grey;
       background-image: linear-gradient(
         to right,
         rgba(255, 0, 0, 0),
@@ -83,7 +82,7 @@ class BandCard extends LitElement {
       justify-content: center;
       border: solid;
       border-color: transparent;
-      color: var(--band-card-dark-purple);
+      color: var(--band-card-text-color);
       margin: 10px;
       border-radius: 15px;
       width: 200px;
@@ -102,7 +101,7 @@ class BandCard extends LitElement {
     button:hover,
     button:focus {
       background-color: white;
-      color: var(--band-card-dark-purple);
+      color: var(--band-card-text-color);
       border-color: transparent;
       box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
       opacity: 1;

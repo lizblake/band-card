@@ -74,6 +74,7 @@ class BandTaskbar extends LitElement {
 
     //changes background
     _changeBackground(e) {
+      this.querySelector('band-card').style.setProperty('--band-card-background-color', 'limegreen');
       console.log("this clicks");
     }
 
