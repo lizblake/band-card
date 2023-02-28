@@ -7,15 +7,21 @@ class BandCard extends LitElement {
     title: { type: String },
     imageLink: { type: String },
     buttonText: { type: String },
+    lightBackground: { type: Boolean, reflect: true, attribute: 'light-background'}
   };
 
   static styles = css`
+    :host {
+      --band-card-light-purple:#46055b;
+      --band-card-dark-purple: #220032;
+      --band-card-grey: grey;
+    }
     @keyframes card_hover {
       from {
-        background-color: dark grey;
+        background-color: var(--band-card-grey);
       }
       to {
-        background-color: #46055b;
+        background-color: var(--band-card-light-purple);
       }
       from {
         color: black;
@@ -25,14 +31,14 @@ class BandCard extends LitElement {
       }
     }
     .band-card {
-      color: var(--band-card-text, #220032);
+      color: var(--band-card-dark-purple);
       display: flex;
       flex-direction: column;
       margin-bottom: 5px;
       padding: none;
       width: 400px;
       border-radius: 10px;
-      background-color: var(--band-card-background, grey);
+      background-color: var(--band-card-grey);
       background-image: linear-gradient(
         to right,
         rgba(255, 0, 0, 0),
@@ -77,7 +83,7 @@ class BandCard extends LitElement {
       justify-content: center;
       border: solid;
       border-color: transparent;
-      color: #220032;
+      color: var(--band-card-dark-purple);
       margin: 10px;
       border-radius: 15px;
       width: 200px;
@@ -96,7 +102,7 @@ class BandCard extends LitElement {
     button:hover,
     button:focus {
       background-color: white;
-      color: #220032;
+      color: var(--band-card-dark-purple);
       border-color: transparent;
       box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
       opacity: 1;
@@ -113,10 +119,8 @@ class BandCard extends LitElement {
       display: none;
     }
 
-    @media screen and (max-width: 800px) and (min-width: 500px) {
-      .band-button-container {
-        visibility: visible;
-      }
+    :host([light-background]) .band-card {
+      background-color: lightblue;
     }
 
     @media screen and (max-width: 500px) {
@@ -132,6 +136,7 @@ class BandCard extends LitElement {
     this.imageLink =
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
+    this.lightBackground = false;
   }
 
 
@@ -152,6 +157,7 @@ class BandCard extends LitElement {
     `;
   }
 
+  //change to details and summary
   _showDetails() {
     var pBand = this.shadowRoot.querySelector('.band-paragraph');
     if (pBand.style.display != "block") {
