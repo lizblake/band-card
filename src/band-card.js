@@ -138,7 +138,6 @@ class BandCard extends LitElement {
     this.title = 'scotia';
     this.imageLink =
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
-    this.buttonText = 'details';
     this.showInformation = "Info";
     this.lightBackground = false;
     this.openDetails = false;
