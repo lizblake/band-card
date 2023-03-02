@@ -30,9 +30,11 @@ class BandCard extends LitElement {
       }
     }
     .band-card {
+      display: inline-block;
+      vertical-align: text-top;
       color: var(--band-card-text-color);
-      display: flex;
-      flex-direction: column;
+      /* display: flex;
+      flex-direction: column; */
       margin-bottom: 5px;
       padding: none;
       width: 400px;
@@ -73,9 +75,9 @@ class BandCard extends LitElement {
       width: 70%;
       border: none;
     }
-    .band-button-container {
+    .band-details {
       text-align: center;
-      visibility: hidden;
+      padding: 10px;
     }
 
     button {
@@ -136,6 +138,7 @@ class BandCard extends LitElement {
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
     this.lightBackground = false;
+    this.showInformation = "Info";
   }
 
 
@@ -145,25 +148,16 @@ class BandCard extends LitElement {
         <div class="band-header">
           <h1 class="band-title">${this.title}</h1>
         </div>
-        <p class="band-paragraph">
-         <slot></slot>
-        </p>
         <img class="band-image" src="${this.imageLink}" />
-        <div class="band-button-container">
-          <button @click="${this._showDetails}" class="band-details-button">${this.buttonText}</button>
+        <details class="band-details">
+            <summary>${this.showInformation}</summary>
+              <div>
+              <slot></slot>
+              </div>
+          </details> 
         </div>
       </div>
     `;
-  }
-
-  //change to details and summary
-  _showDetails() {
-    var pBand = this.shadowRoot.querySelector('.band-paragraph');
-    if (pBand.style.display != "block") {
-      pBand.style.display = "block";
-    } else {
-      pBand.style.display = "none";
-    }
   }
 }
 customElements.define('band-card', BandCard);

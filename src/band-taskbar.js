@@ -59,7 +59,7 @@ class BandTaskbar extends LitElement {
       <div class="band-taskbar">
         <button @click="${this._addCard}" class="band-add-button">Add</button>
         <button @click="${this._changeBackground}" class="band-background-button">Background</button>
-        <button @click="${this._toggleTitle}" class="band-title-button">Title</button>
+        <button @click="${this._changeTitle}" class="band-title-button">Title</button>
         <button @click="${this._deleteCard}" class="band-delete-button">Delete</button>
       </div>
       <slot></slot>
@@ -75,11 +75,10 @@ class BandTaskbar extends LitElement {
     //changes background
     _changeBackground(e) {
       this.querySelector('band-card').style.setProperty('--band-card-background-color', 'limegreen');
-      console.log("this clicks");
     }
 
     //toggles title
-    _toggleTitle(e) {
+    _changeTitle(e) {
       let title = prompt("Name a band");
       if(title) {
         this.children[0].title = title;
