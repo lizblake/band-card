@@ -7,7 +7,9 @@ class BandCard extends LitElement {
     title: { type: String },
     imageLink: { type: String },
     buttonText: { type: String },
-    lightBackground: { type: Boolean, reflect: true, attribute: 'light-background'}
+    showInformation: {type: String, reflect: true},
+    lightBackground: { type: Boolean, reflect: true, attribute: 'light-background'},
+    openDetails: {type: Boolean, reflect: true},
   };
 
   static styles = css`
@@ -137,8 +139,30 @@ class BandCard extends LitElement {
     this.imageLink =
       'https://thesquonkisrealandthirstsforyourtears.com/IMG_3167.JPG';
     this.buttonText = 'details';
-    this.lightBackground = false;
     this.showInformation = "Info";
+    this.lightBackground = false;
+    this.openDetails = false;
+  }
+
+  ToggleEvent(e) {
+    const state = this.shadowRoot.querySelector('band-details').getAttribute('open') === '' ? true: false;
+    this.openDetails = state;
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName === "openDetails") {
+        this.dispatchEvent(new CustomEvent('openDetails-toggled', {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            value: this[propName]
+          }
+        }));
+        console.log(`${propName} toggled. oldValue: ${oldValue}`);
+      }
+    });
   }
 
 
