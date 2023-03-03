@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 //const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
@@ -7,6 +8,8 @@ class BandCard extends LitElement {
     title: { type: String },
     imageLink: { type: String },
     buttonText: { type: String },
+    topText: {type: String},
+    bottomText: {type: String},
     showInformation: {type: String, reflect: true},
     lightBackground: { type: Boolean, reflect: true, attribute: 'light-background'},
     openDetails: {type: Boolean, reflect: true},
@@ -141,10 +144,13 @@ class BandCard extends LitElement {
     this.showInformation = "Info";
     this.lightBackground = false;
     this.openDetails = false;
+    this.topText = "best band";
+    this.bottomText = "EVER";
   }
 
   ToggleEvent(e) {
-    const state = this.shadowRoot.querySelector('band-details').getAttribute('open') === '' ? true: false;
+    //calls tag
+    const state = this.shadowRoot.querySelector('details').getAttribute('open') === '' ? true: false;
     this.openDetails = state;
   }
 
@@ -171,8 +177,9 @@ class BandCard extends LitElement {
         <div class="band-header">
           <h1 class="band-title">${this.title}</h1>
         </div>
-        <img class="band-image" src="${this.imageLink}" />
-        <details class="band-details">
+        <meme-maker class="band-image" image-url="${this.imageLink}" top-text="${this.topText}" bottom-text="${this.bottomText}"></meme-maker>
+        <!-- <img class="band-image" src="${this.imageLink}" /> -->
+        <details class="band-details" .open="${this.openDetails}" @toggle="${this.ToggleEvent}">
             <summary>${this.showInformation}</summary>
               <div>
               <slot></slot>

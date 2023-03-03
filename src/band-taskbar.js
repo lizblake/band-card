@@ -2,9 +2,6 @@ import { LitElement, html, css } from 'lit';
 
 class BandTaskbar extends LitElement {
   static properties = {
-    title: { type: String },
-    paragraphText: { type: String },
-    imageLink: { type: String },
     buttonText: { type: String },
   };
 
@@ -39,7 +36,8 @@ class BandTaskbar extends LitElement {
     .band-add-button,
     .band-background-button,
     .band-title-button,
-    .band-delete-button {
+    .band-delete-button,
+    .band-details-button {
       border-color: #220032;
       margin: 10px;
     }
@@ -61,6 +59,7 @@ class BandTaskbar extends LitElement {
         <button @click="${this._changeBackground}" class="band-background-button">Background</button>
         <button @click="${this._changeTitle}" class="band-title-button">Title</button>
         <button @click="${this._deleteCard}" class="band-delete-button">Delete</button>
+        <button @click="${this._toggleDetails}" class="band-details-button">Toggle Details</button>
       </div>
       <slot></slot>
     `;
@@ -94,6 +93,11 @@ class BandTaskbar extends LitElement {
           alert("YOU CAN NOT DELETE!!!!");
         }
       }
+    _toggleDetails(e) {
+      document.querySelectorAll('band-card').forEach((item)=> {
+        item.openDetails = !item.openDetails;
+      })
+    }
 
   }
 
