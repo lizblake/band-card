@@ -84,6 +84,13 @@ class BandCard extends LitElement {
       text-align: center;
       padding: 10px;
     }
+    .band-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 70%;
+      border: none;
+    }
 
     button {
       justify-content: center;
