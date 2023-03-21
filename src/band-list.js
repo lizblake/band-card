@@ -20,7 +20,7 @@ export class BandList extends LitElement {
     }
 
     updateList() {
-        const address = new URL('../api/band.js', import.meta.url).href;
+        const address = '../api/band.js';
         fetch(address).then((response) => {
             if (response.ok) {
                 return response.json()
