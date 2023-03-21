@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import "./band-card";
+import "./band-card.js";
 
 export class BandList extends LitElement {
     static get tag() {
@@ -20,7 +20,7 @@ export class BandList extends LitElement {
     }
 
     updateList() {
-        const address = new URL('../api/list', import.meta.url).href;
+        const address = new URL('../api/band.js', import.meta.url).href;
         fetch(address).then((response) => {
             if (response.ok) {
                 return response.json()
@@ -53,7 +53,7 @@ export class BandList extends LitElement {
         <div class="wrapper">
             ${this.bands.map(band => html`
             <div class="item">
-                <band-card name="${band.title}" image="${band.image}" information="${band.information}" topText="${band.topText}" bottomText="${band.bottomText}" ></band-card>
+                <band-card title="${band.title}" image="${band.image}" information="${band.information}" topText="${band.topText}" bottomText="${band.bottomText}" ></band-card>
             </div>
             `)}
         </div>

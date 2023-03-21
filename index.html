@@ -28,8 +28,8 @@
   </head>
 
   <body>
+    <band-list></band-list>
     <div class="band-app">
-      <band-meme-maker></band-meme-maker>
       <band-taskbar>
         <band-card showInformation="new title">
           <div>
@@ -42,5 +42,9 @@
         <band-card light-background></band-card>
       </band-taskbar>
     </div>
+    <script type="module">
+      import "./src/band-card.js";
+      import "./src/band-list.js";
+    </script>
   </body>
 </html>
